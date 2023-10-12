@@ -1,0 +1,526 @@
+[
+  {
+    "team": {
+      "name": "Cardinals",
+      "location": "Arizona",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-arizona-cardinals-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "State Farm Stadium",
+      "capacity": 63400,
+      "image": "https://3apq7g38q3kw2yn3fx4bojii-wpengine.netdna-ssl.com/wp-content/uploads/2018/11/879742732_state-farm-stadium-general.jpg"
+    },
+    "conference": "NFC",
+    "titles": []
+  },
+  {
+    "team": {
+      "name": "Falcons",
+      "location": "Atlanta",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-atlanta-falcons-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Mercedes Benz Stadium",
+      "capacity": 71000,
+      "image": "https://www.atlantadowntown.com/_files/images/mb-stadium-finished.jpg"
+    },
+    "conference": "NFC",
+    "titles": []
+  },
+  {
+    "team": {
+      "name": "Ravens",
+      "location": "Baltimore",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-baltimore-ravens-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "M&T Bank Stadium",
+      "capacity": 71000,
+      "image": "https://sportsmatik.com/uploads/wiki-venues/M-T-Bank-Stadium_1494311820_73144.jpg"
+    },
+    "conference": "AFC",
+    "titles": [
+      2000,
+      2012
+    ]
+  },
+  {
+    "team": {
+      "name": "Bills",
+      "location": "Buffalo",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-buffalo-bills-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "New Era Field",
+      "capacity": 73079,
+      "image": "http://footballstadiumdigest.com/wp-content/uploads/2016/03/ralph-wilson-stadium.jpg"
+    },
+    "conference": "AFC",
+    "titles": []
+  },
+  {
+    "team": {
+      "name": "Panthers",
+      "location": "Carolina",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-carolina-panthers-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Bank of America Stadium",
+      "capacity": 73778,
+      "image": "https://media-ncd.cmgdigital.com/photo/2017/12/15/bank%20of%20america%20stadium%20custom_1513382417009_10254756_ver1.0_1280_720.jpg"
+    },
+    "conference": "NFC",
+    "titles": []
+  },
+  {
+    "team": {
+      "name": "Bears",
+      "location": "Chicago",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-chicago-bears-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Soldier Field",
+      "capacity": 61500,
+      "image": "https://i.pinimg.com/originals/1d/f6/20/1df6201f53c53bd54e260de73163ccb0.jpg"
+    },
+    "conference": "NFC",
+    "titles": [
+      1985
+    ]
+  },
+  {
+    "team": {
+      "name": "Bengals",
+      "location": "Cincinatti",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-cincinnati-bengals-team-logo-768x768.png"
+    },
+    "stadium": {
+      "name": "Paul Brown Stadium",
+      "capacity": 65535,
+      "image": "https://utrockets.com/common/controls/image_handler.aspx?thumb_prefix=rp_primary&image_path=/images/2014/8/5/cincinnati_bengals_4.jpg"
+    },
+    "conference": "AFC",
+    "titles": []
+  },
+  {
+    "team": {
+      "name": "Browns",
+      "location": "Cleveland",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-cleveland-browns-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "FirstEnergy Stadium",
+      "capacity": 67047,
+      "image": "https://thisisclevelandprodcdn.azureedge.net/w-1200-h-630-mode-crop-quality-75-cache-1-0/ThisIsCleveland/media/Images/Major%2520Attractions/Banner%25201920x720/cleveland-major-attractions-cleveland-browns-banner.jpg"
+    },
+    "conference": "AFC",
+    "titles": []
+  },
+  {
+    "team": {
+      "name": "Cowboys",
+      "location": "Dallas",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-dallas-cowboys-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "AT&T Stadium",
+      "capacity": 80000,
+      "image": "https://www.rateyourseats.com/shared/ATT-Stadium-Football-Section-433-Row-4_on_8-18-2018_FL.jpg"
+    },
+    "conference": "NFC",
+    "titles": [
+      1971,
+      1977,
+      1992,
+      1993,
+      1995
+    ]
+  },
+  {
+    "team": {
+      "name": "Redskins",
+      "location": "Washington",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-washington-redskins-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "FedEx Field",
+      "capacity": 79000,
+      "image": "https://www.washingtonpost.com/resizer/VnMtD9b4ogJLd-w9Lc3TpLGnax0=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/BELI2IVWBYI6RIWFGGD7IJ7CKM.jpg"
+    },
+    "conference": "NFC",
+    "titles": [
+      1982,
+      1987,
+      1991
+    ]
+  },
+  {
+    "team": {
+      "name": "Broncos",
+      "location": "Denver",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-denver-broncos-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Broncos Stadium at Mile High",
+      "capacity": 76125,
+      "image": "https://stadiumjourney.com/wp-content/uploads/2014/10/The-National-Anthem-at-Broncos-Stadium-at-Mile-High.jpg"
+    },
+    "conference": "AFC",
+    "titles": [
+      1997,
+      1998,
+      2015
+    ]
+  },
+  {
+    "team": {
+      "name": "Lions",
+      "location": "Detroit",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-detroit-lions-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Ford Field",
+      "capacity": 70000,
+      "image": "https://pbs.twimg.com/media/Di9MxWUW0AEpwvw.jpg"
+    },
+    "conference": "NFC",
+    "titles": []
+  },
+  {
+    "team": {
+      "name": "Packers",
+      "location": "Green Bay",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-green-bay-packers-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Lambeau Field",
+      "capacity": 80750,
+      "image": "https://cdn.vox-cdn.com/thumbor/pk5gp5jryCMb2MyESxT9jqKHDvk=/50x0:3946x2597/1200x800/filters:focal(50x0:3946x2597)/cdn.vox-cdn.com/uploads/chorus_image/image/38934850/455462974.0.jpg"
+    },
+    "conference": "NFC",
+    "titles": [
+      1966,
+      1967,
+      1996,
+      2010
+    ]
+  },
+  {
+    "team": {
+      "name": "Texans",
+      "location": "Houston",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-houston-texans-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "NRG Stadium",
+      "capacity": 71054,
+      "image": "https://www.nrgpark.com/wp-content/uploads/stadium-slide-6.jpg"
+    },
+    "conference": "AFC",
+    "titles": []
+  },
+  {
+    "team": {
+      "name": "Colts",
+      "location": "Indianapolis",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-indianapolis-colts-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Lucas Oil Stadium",
+      "capacity": 62421,
+      "image": "https://i.pinimg.com/originals/8f/4c/42/8f4c42e6200d541bba35e06c51ca4d78.jpg"
+    },
+    "conference": "AFC",
+    "titles": [
+      1970,
+      2006
+    ]
+  },
+  {
+    "team": {
+      "name": "Jaguars",
+      "location": "Jacksonville",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-jacksonville-jaguars-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "TIAA Bank Field",
+      "capacity": 66851,
+      "image": "https://www.visitjacksonville.com/imager/s3_amazonaws_com/visitjax-2018/craft-images/ketterman_141218_6463_ca1e9d0a108bb13be424f75e2ff4a5e5.jpg"
+    },
+    "conference": "AFC",
+    "titles": []
+  },
+  {
+    "team": {
+      "name": "Chiefs",
+      "location": "Kansas City",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-kansas-city-chiefs-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Arrowhead Stadium",
+      "capacity": 78097,
+      "image": "https://i.pinimg.com/originals/d8/3f/e7/d83fe78cfb85c9649e21cecc10546094.jpg"
+    },
+    "conference": "AFC",
+    "titles": [
+      1969,
+      2019
+    ]
+  },
+  {
+    "team": {
+      "name": "Chargers",
+      "location": "Los Angeles",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-los-angeles-chargers-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "StubHub Center",
+      "capacity": 30000,
+      "image": "https://stadiumjourney.com/wp-content/uploads/2017/08/StubHub-Center-Interior.jpg"
+    },
+    "conference": "AFC",
+    "titles": []
+  },
+  {
+    "team": {
+      "name": "Rams",
+      "location": "Los Angeles",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-los-angeles-rams-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Los Angeles Memorial Coliseum",
+      "capacity": 77500,
+      "image": "http://www.musco.com/wp-content/uploads/2016/10/coliseum3.jpg"
+    },
+    "conference": "NFC",
+    "titles": [
+      1999,
+      2021
+    ]
+  },
+  {
+    "team": {
+      "name": "Dolphins",
+      "location": "Miami",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-miami-dolphins-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Hard Rock Stadium",
+      "capacity": 75540,
+      "image": "https://1eul351akr914ec25u2odxb1-wpengine.netdna-ssl.com/wp-content/uploads/2019/02/mia-stadium.jpg"
+    },
+    "conference": "AFC",
+    "titles": [
+      1972,
+      1973
+    ]
+  },
+  {
+    "team": {
+      "name": "Vikings",
+      "location": "Minnesotta",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-minnesota-vikings-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "U.S Bank Stadium",
+      "capacity": 65000,
+      "image": "https://sportetsociete.files.wordpress.com/2018/01/us-bank-stadium.jpg"
+    },
+    "conference": "NFC",
+    "titles": []
+  },
+  {
+    "team": {
+      "name": "Patriots",
+      "location": "New England",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-new-england-patriots-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Gillette Stadium",
+      "capacity": 68756,
+      "image": "http://airsolutionsandbalancing.com/wp-content/uploads/Gillette-Stadium.jpg"
+    },
+    "conference": "AFC",
+    "titles": [
+      2001,
+      2003,
+      2004,
+      2014,
+      2016,
+      2018
+    ]
+  },
+  {
+    "team": {
+      "name": "Saints",
+      "location": "New Orleans",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-new-orleans-saints-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Mercedes Benz Superdome",
+      "capacity": 73208,
+      "image": "http://www.musco.com/wp-content/uploads/2016/11/superdome.jpg"
+    },
+    "conference": "NFC",
+    "titles": [
+      2009
+    ]
+  },
+  {
+    "team": {
+      "name": "Giants",
+      "location": "New York",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-new-york-giants-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "MetLife Stadium",
+      "capacity": 82566,
+      "image": "https://catch-newz.com/images/2019/03/30/metlife-stadium.jpg"
+    },
+    "conference": "NFC",
+    "titles": [
+      1986,
+      1990,
+      2007,
+      2011
+    ]
+  },
+  {
+    "team": {
+      "name": "Jets",
+      "location": "New York",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-new-york-jets-team-logo-768x768.png"
+    },
+    "stadium": {
+      "name": "MetLife Stadium",
+      "capacity": 82566,
+      "image": "https://catch-newz.com/images/2019/03/30/metlife-stadium.jpg"
+    },
+    "conference": "AFC",
+    "titles": [
+      1968
+    ]
+  },
+  {
+    "team": {
+      "name": "Raiders",
+      "location": "Las Vegas",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-oakland-raiders-team-logo-768x768.png"
+    },
+    "stadium": {
+      "name": "Oakland Alameda County Stadium",
+      "capacity": 63122,
+      "image": "https://www.reviewjournal.com/wp-content/uploads/2019/02/11832371_web1_raidersinoaklandweb.jpg"
+    },
+    "conference": "AFC",
+    "titles": [
+      1976,
+      1980,
+      1983
+    ]
+  },
+  {
+    "team": {
+      "name": "Eagles",
+      "location": "Philadelphia",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-philadelphia-eagles-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Lincoln Financial Field",
+      "capacity": 69176,
+      "image": "https://www.mondodr.com/wp-content/uploads/2017/02/karray.jpg"
+    },
+    "conference": "NFC",
+    "titles": [
+      2017
+    ]
+  },
+  {
+    "team": {
+      "name": "Steelers",
+      "location": "Pittsburg",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-pittsburgh-steelers-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Heinz Stadium",
+      "capacity": 65500,
+      "image": "https://www.monaco-pittsburgh.com/images/1700-960/heinz-field-e728a383.jpg"
+    },
+    "conference": "AFC",
+    "titles": [
+      1974,
+      1975,
+      1978,
+      1979,
+      2005,
+      2008
+    ]
+  },
+  {
+    "team": {
+      "name": "Seahawks",
+      "location": "Seattle",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-seattle-seahawks-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Century Link Field",
+      "capacity": 67000,
+      "image": "https://stmed.net/sites/default/files/seattle-seahawks-stadium-wallpapers-31363-1907251.jpg"
+    },
+    "conference": "NFC",
+    "titles": [
+      2013
+    ]
+  },
+  {
+    "team": {
+      "name": "49ers",
+      "location": "San Francisco",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-san-francisco-49ers-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Levi's Stadium",
+      "capacity": 68500,
+      "image": "https://res.cloudinary.com/dostuff-media/image/upload//c_fill,g_faces,h_630,w_1200/v1451279237/venue-310781.jpg"
+    },
+    "conference": "NFC",
+    "titles": [
+      1981,
+      1984,
+      1988,
+      1989,
+      1994
+    ]
+  },
+  {
+    "team": {
+      "name": "Buccaneers",
+      "location": "Tampa Bay",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-tampa-bay-buccaneers-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Raymond James Stadium",
+      "capacity": 65890,
+      "image": "https://stadiumjourney.com/wp-content/uploads/2016/10/Raymond-James-Stadium-Interior.jpg"
+    },
+    "conference": "NFC",
+    "titles": [
+      2002,
+      2020
+    ]
+  },
+  {
+    "team": {
+      "name": "Titans",
+      "location": "Tennessee",
+      "logo": "https://loodibee.com/wp-content/uploads/nfl-tennessee-titans-team-logo-2-768x768.png"
+    },
+    "stadium": {
+      "name": "Nissan Stadium",
+      "capacity": 69143,
+      "image": "https://www.gannett-cdn.com/-mm-/615eb9b3dda3f2daf3ceb045278d833fb7918d51/c=0-286-5616-3459/local/-/media/2015/10/11/Nashville/Nashville/635801905519638163-Bills-Titans-Football-kmitchell-tennessean.com-1.jpg?width=3200&height=1680&fit=crop"
+    },
+    "conference": "AFC",
+    "titles": []
+  }
+]

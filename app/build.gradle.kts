@@ -63,6 +63,7 @@ dependencies {
     implementation ("androidx.compose.animation:animation:1.5.3")
     implementation ("androidx.compose.ui:ui-tooling:<latest-version>")
     implementation ("androidx.compose.runtime:runtime-livedata:<latest-version>")
+    implementation("com.google.code.gson:gson:2.10")
 
 
     testImplementation("junit:junit:4.13.2")

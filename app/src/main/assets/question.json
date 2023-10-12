@@ -1,0 +1,99 @@
+{
+  "eazy": [
+    {
+      "question": "Q1 EZ",
+      "response": 1,
+      "proposal": {
+        "p1": "TRUE",
+        "p2": "FALSE",
+        "p3": "FALSE",
+        "p4": "FALSE"
+      }
+    },
+    {
+      "question": "Q2 EZ",
+      "response": 1,
+      "proposal": {
+        "p1": "TRUE",
+        "p2": "FALSE",
+        "p3": "FALSE",
+        "p4": "FALSE"
+      }
+    },
+    {
+      "question": "Q3 EZ",
+      "response": 1,
+      "proposal": {
+        "p1": "TRUE",
+        "p2": "FALSE",
+        "p3": "FALSE",
+        "p4": "FALSE"
+      }
+    }
+  ],
+  "hard": [
+    {
+      "question": "Q1 HARD",
+      "response": 1,
+      "proposal": {
+        "p1": "TRUE",
+        "p2": "FALSE",
+        "p3": "FALSE",
+        "p4": "FALSE"
+      }
+    },
+    {
+      "question": "Q2 HARD",
+      "response": 1,
+      "proposal": {
+        "p1": "TRUE",
+        "p2": "FALSE",
+        "p3": "FALSE",
+        "p4": "FALSE"
+      }
+    },
+    {
+      "question": "Q3 HARD",
+      "response": 1,
+      "proposal": {
+        "p1": "TRUE",
+        "p2": "FALSE",
+        "p3": "FALSE",
+        "p4": "FALSE"
+      }
+    }
+  ],
+  "impossible": [
+    {
+      "question": "Q1 HARD",
+      "response": 1,
+      "proposal": {
+        "p1": "TRUE",
+        "p2": "FALSE",
+        "p3": "FALSE",
+        "p4": "FALSE"
+      }
+    },
+    {
+      "question": "Q2 HARD",
+      "response": 1,
+      "proposal": {
+        "p1": "TRUE",
+        "p2": "FALSE",
+        "p3": "FALSE",
+        "p4": "FALSE"
+      }
+    },
+    {
+      "question": "Q3 HARD",
+      "response": 1,
+      "proposal": {
+        "p1": "TRUE",
+        "p2": "FALSE",
+        "p3": "FALSE",
+        "p4": "FALSE"
+      }
+    }
+  ]
+}
+

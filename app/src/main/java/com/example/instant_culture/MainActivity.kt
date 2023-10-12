@@ -7,9 +7,12 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.instant_culture.model.QuizQuestion
+import com.example.instant_culture.services.JsonParser
 import com.example.instant_culture.ui.theme.InstantcultureTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,17 +24,21 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ScaffoldComposable()
+                    ScaffoldComposable(applicationContext)
                 }
             }
         }
     }
 }
 
+@Composable
+fun test(questions: List<QuizQuestion>?) {
+    Text(questions?.size.toString())
+}
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     InstantcultureTheme {
-        ScaffoldComposable()
+        //ScaffoldComposable(applicationContext)
     }
 }

@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,18 +18,20 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.sharp.Close
 import androidx.compose.material.icons.sharp.Menu
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -40,12 +41,25 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.instant_culture.R
+import com.example.instant_culture.model.QuizQuestion
 import com.example.instant_culture.model.ResponseCard
 import com.example.instant_culture.ui.theme.InstantcultureTheme
 
 @Composable
-fun QuestionView(onClick: () -> Unit) {
-    RotatingScaledBackgroundImage(painter = painterResource(id = R.drawable.vertvertbackground))
+fun QuestionView(
+    onClick: () -> Unit,
+    questions: List<QuizQuestion>?,
+    questionOrder: Int,
+    background: Int,
+    onClickNext: () -> Unit,
+    onClickHome: () -> Unit,
+) {
+    val questionTitle: String? = questions?.get(questionOrder)?.question
+    val selectedResponse =
+        remember { mutableStateOf<Int?>(null) }
+    val showDialog = remember { mutableStateOf(false) }
+
+    RotatingScaledBackgroundImage(painter = painterResource(id = background))
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -122,12 +136,19 @@ fun QuestionView(onClick: () -> Unit) {
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(
-                        text = "C'est une grande question, m, donc vfeokez foefj jfàizejf ezoj-père que tu as lakyuky ukuykuyuk yuk uk  répo efz fnse?fe", //limiter a 120 char
-                        style = MaterialTheme.typography.bodyLarge,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(bottom = 15.dp, top = 10.dp, start = 15.dp, end = 15.dp)
-                    )
+                    if (questionTitle != null) {
+                        Text(
+                            text = questionTitle, //limiter a 120 char
+                            style = MaterialTheme.typography.bodyLarge,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.padding(
+                                bottom = 15.dp,
+                                top = 10.dp,
+                                start = 15.dp,
+                                end = 15.dp
+                            )
+                        )
+                    }
                 }
             }
         }
@@ -137,64 +158,83 @@ fun QuestionView(onClick: () -> Unit) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            var i = 0
-            while (i < 4) {
-                i++
-                Box(
-                    modifier = Modifier
-                        .width(350.dp)
-                        .height(95.dp)
-                        .clickable {
-                            print(i.toString())
-                        },
-                ) {
-                    var drawableInt = R.drawable.btnresponse
-                    when (i) {
-                        1 -> {
-                            drawableInt = ResponseCard.A.draw
-                        }
-                        2 -> {
-                            drawableInt = ResponseCard.B.draw
-                        }
-                        3 -> {
-                            drawableInt = ResponseCard.C.draw
-                        }
-                        4 -> {
-                            drawableInt = ResponseCard.D.draw
-                        }
+            questions?.get(questionOrder)?.proposal?.let { proposal ->
+                listOf(
+                    proposal.p1,
+                    proposal.p2,
+                    proposal.p3,
+                    proposal.p4
+                ).forEachIndexed { index, responseText ->
+                    val responseOrder = index + 1
+                    val isCorrectResponse = responseOrder == questions[questionOrder].response
+
+                    val drawableInt = when {
+                        selectedResponse.value == null -> R.drawable.btnresponse
+                        selectedResponse.value == responseOrder && isCorrectResponse -> R.drawable.goodresponse
+                        selectedResponse.value == responseOrder && !isCorrectResponse -> R.drawable.selectedbadresponse
+                        selectedResponse.value != responseOrder && isCorrectResponse -> R.drawable.goodresponse
+                        selectedResponse.value != responseOrder -> R.drawable.badresponse
+                        else -> R.drawable.btnresponse
                     }
-                    Image(
+
+                    Box(
                         modifier = Modifier
                             .width(350.dp)
-                            .height(80.dp),
-                        painter = painterResource(id = drawableInt),
-                        contentDescription = null,
-
-                        )
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 70.dp, end = 20.dp)
-                            .height(70.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
+                            .height(95.dp)
                     ) {
-                        Text(
-                            text = "iheuHEUfhçuefHIEfhoiefjoipefhpKIPOefjopiefiojfOEJFPOjfeopîhjfe eff ef efe FYEJSDI", // limite de 80 char
-                            fontSize = 20.sp,
-                            style = TextStyle(lineHeight = 22.sp)
+                        Image(
+                            modifier = Modifier
+                                .width(350.dp)
+                                .height(80.dp)
+                                .clickable {
+                                    selectedResponse.value = responseOrder
+                                    showDialog.value = true
+                                },
+                            painter = painterResource(id = drawableInt),
+                            contentDescription = null,
                         )
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 70.dp, end = 20.dp)
+                                .height(70.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = responseText, // limite de 80 char
+                                fontSize = 20.sp,
+                                style = TextStyle(lineHeight = 22.sp)
+                            )
+                        }
                     }
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    InstantcultureTheme {
-        QuestionView(onClick = {})
+        if (showDialog.value) {
+            AlertDialog(
+                onDismissRequest = {
+                    showDialog.value = false
+                },
+                title = { Text(text = "Réponse sélectionnée") },
+                text = {
+                    Text(
+                        text = if (selectedResponse.value == questions?.get(questionOrder)?.response) {
+                            "Bonne réponse!"
+                        } else {
+                            "Mauvaise réponse! Essayez encore."
+                        }
+                    )
+                },
+                confirmButton = {
+                    Button(
+                        if (selectedResponse.value == questions?.get(questionOrder)?.response) onClickNext else onClickHome
+                    ) {
+                        Text("OK")
+                    }
+                }
+            )
+        }
     }
 }
