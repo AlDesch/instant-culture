@@ -24,7 +24,7 @@ fun ConfirmationView(
     onClickReday: () -> Unit,
     onClickHome: () -> Unit
 ) {
-    RotatingScaledBackgroundImage(painter = painterResource(id = R.drawable.vvbackground), durationMillis = 30000)
+    RotatingScaledBackgroundImage(painter = painterResource(id = R.drawable.confirmationmode), durationMillis = 30000)
     Column(
         modifier = Modifier
             .fillMaxSize()

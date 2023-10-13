@@ -42,7 +42,7 @@ fun WaitingScreen(navController: NavController) {
     var timeLeft by remember { mutableIntStateOf(3) }
 
     RotatingScaledBackgroundImage(
-        painter = painterResource(id = R.drawable.vertvertbackground),
+        painter = painterResource(id = R.drawable.waitingmode),
         durationMillis = 1000
     )
     Column(

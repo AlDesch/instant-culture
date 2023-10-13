@@ -33,7 +33,7 @@ fun BeginView(
     val context = LocalContext.current
     MusicManager.playMusic(context,R.raw.main)
 
-    RotatingScaledBackgroundImage(painter = painterResource(id = R.drawable.bwbackground), durationMillis = 30000)
+    RotatingScaledBackgroundImage(painter = painterResource(id = R.drawable.menumode), durationMillis = 30000)
     Column(
         modifier = Modifier
             .fillMaxSize()

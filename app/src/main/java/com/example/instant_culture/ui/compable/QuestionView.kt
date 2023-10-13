@@ -194,9 +194,7 @@ fun QuestionView(
                         val drawableInt = when {
                             selectedResponse.value == null -> R.drawable.btnresponse
                             selectedResponse.value == responseOrder && isCorrectResponse -> R.drawable.goodresponse
-                            selectedResponse.value == responseOrder && !isCorrectResponse -> R.drawable.selectedbadresponse
-                            selectedResponse.value != responseOrder && isCorrectResponse -> R.drawable.goodresponse
-                            selectedResponse.value != responseOrder -> R.drawable.badresponse
+                            selectedResponse.value == responseOrder && !isCorrectResponse -> R.drawable.badresponse
                             else -> R.drawable.btnresponse
                         }
 
@@ -259,68 +257,5 @@ fun QuestionView(
 fun ResponsiveBox(content: @Composable BoxScope.(Constraints) -> Unit) {
     BoxWithConstraints {
         content(constraints)
-    }
-}
-
-@Composable
-fun CustomPopup(
-    showDialog: Boolean,
-    onClickNext: () -> Unit,
-    onClickHome: () -> Unit,
-    selectedResponse: Int?,
-    questionOrder: Int,
-    questions: List<QuizQuestion>?
-) {
-    if (showDialog) {
-        var clickBtn by remember { mutableStateOf(true) }
-
-        Dialog(onDismissRequest = { }) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Surface(
-                    shape = RoundedCornerShape(16.dp),
-                ) {
-                    Column(
-                        modifier = Modifier.padding(16.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(if (selectedResponse == questions?.get(questionOrder)?.response) "Bravo !" else "Raté :/")
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 16.dp),
-                            horizontalArrangement = Arrangement.SpaceEvenly
-                        ) {
-                            if (selectedResponse == questions?.get(questionOrder)?.response) {
-                                Button(
-                                    onClick = {
-                                        clickBtn = false
-                                        onClickNext()
-                                    },
-                                    enabled = clickBtn
-                                ) {
-                                    Text("Yesss")
-                                }
-                            } else {
-                                Button(
-                                    onClick = {
-                                        clickBtn = false
-                                        onClickHome()
-                                    },
-                                    enabled = clickBtn
-                                ) {
-                                    Text("Vraiment ? ! ?")
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }

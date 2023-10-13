@@ -46,11 +46,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-fun onBackground() {
-    MusicManager.stopMusic()
-}
-
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {

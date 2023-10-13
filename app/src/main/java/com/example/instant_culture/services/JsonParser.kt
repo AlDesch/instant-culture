@@ -26,7 +26,7 @@ class JsonParser {
 
     fun getQuestionsFromJson(context: Context, difficulty: Int): List<QuizQuestion>? {
        // val jsonFile = convertJsonToString(context = context, "question.json")
-        val jsonFile = convertJsonToString(context = context, "question.json")
+        val jsonFile = convertJsonToString(context = context, "question_gpt.json")
         if (jsonFile != null) {
             val gson = Gson()
             val type = object : TypeToken<QuizCategory>() {}.type

@@ -89,10 +89,10 @@ fun ScaffoldComposable(applicationContext: Context) {
                     ),
                     questionOrder = questionOrder.intValue,
                     background = when (questionDifficulty.intValue) {
-                        0 -> R.drawable.vertvertbackground
-                        1 -> R.drawable.vvbackground
-                        2 -> R.drawable.bbackground
-                        else -> R.drawable.vertvertbackground
+                        0 -> R.drawable.eazymode
+                        1 -> R.drawable.normalmode
+                        2 -> R.drawable.impossiblemode
+                        else -> R.drawable.menumode
                     },
                     difficulty = questionDifficulty.intValue,
                     rotatingSpeed = when (questionDifficulty.intValue) {
