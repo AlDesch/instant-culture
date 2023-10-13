@@ -11,10 +11,25 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
 import com.example.instant_culture.model.QuizQuestion
 import com.example.instant_culture.ui.theme.InstantcultureTheme
 
 class MainActivity : ComponentActivity() {
+    private val musicLifecycleObserver = object : LifecycleObserver {
+
+        @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+        fun onBackground() {
+            MusicManager.stopMusic()
+        }
+
+        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+        fun onDestroy() {
+            MusicManager.stopMusic()
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -27,13 +42,15 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+        lifecycle.addObserver(musicLifecycleObserver)
     }
 }
 
-@Composable
-fun test(questions: List<QuizQuestion>?) {
-    Text(questions?.size.toString())
+fun onBackground() {
+    MusicManager.stopMusic()
 }
+
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {

@@ -30,7 +30,7 @@ object MusicManager {
         mediaPlayer?.stop()
         mediaPlayer?.release()
         mediaPlayer = null
-        currentPlayingResId = null // Réinitialiser l'identifiant de la ressource lorsque la musique est arrêtée
+        currentPlayingResId = null
     }
 }
 
