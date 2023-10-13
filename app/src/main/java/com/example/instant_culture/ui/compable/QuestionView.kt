@@ -9,6 +9,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -43,6 +45,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
@@ -68,7 +71,7 @@ fun QuestionView(
 
     MusicManager.playMusic(
         context,
-        when(difficulty) {
+        when (difficulty) {
             0 -> R.raw.eazy
             1 -> R.raw.hard
             2 -> R.raw.impossible
@@ -76,169 +79,181 @@ fun QuestionView(
         }
     )
 
-    RotatingScaledBackgroundImage(painter = painterResource(id = background), durationMillis = rotataingSpeed)
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            IconButton(
-                onClick = onClick
-            ) {
-                Surface(
-                    color = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier
-                        .width(50.dp)
-                        .height(50.dp)
-                        .clip(CircleShape)
-                ) {
-                    Icon(
-                        imageVector = Icons.Sharp.Close,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.error
-                    )
-                }
-            }
-            Image(
-                modifier = Modifier.width(250.dp),
-                painter = painterResource(id = R.drawable.instant_culture),
-                contentDescription = null
-            )
-            IconButton(
-                onClick = {
-                    print("Menu")
-                }
-            ) {
-                Surface(
-                    color = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier
-                        .width(50.dp)
-                        .height(50.dp)
-                        .clip(CircleShape)
-                ) {
-                    Icon(
-                        imageVector = Icons.Sharp.Menu,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onPrimary,
-                        modifier = Modifier
-                            .width(40.dp)
-                            .height(40.dp)
-                    )
-                }
-            }
-        }
-        Spacer(modifier = Modifier.height(50.dp))
+    RotatingScaledBackgroundImage(
+        painter = painterResource(id = background),
+        durationMillis = rotataingSpeed
+    )
+    ResponsiveBox {
         Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .fillMaxWidth()
-                .height(250.dp)
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Surface(
-                color = Color.White,
-                border = BorderStroke(5.dp, Color.Black),
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                IconButton(
+                    onClick = onClick
+                ) {
+                    Surface(
+                        color = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier
+                            .width(50.dp)
+                            .height(50.dp)
+                            .clip(CircleShape)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Sharp.Close,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.error
+                        )
+                    }
+                }
+                Image(
+                    modifier = Modifier.width(250.dp),
+                    painter = painterResource(id = R.drawable.instant_culture),
+                    contentDescription = null
+                )
+                IconButton(
+                    onClick = {
+                        print("Menu")
+                    }
+                ) {
+                    Surface(
+                        color = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier
+                            .width(50.dp)
+                            .height(50.dp)
+                            .clip(CircleShape)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Sharp.Menu,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.onPrimary,
+                            modifier = Modifier
+                                .width(40.dp)
+                                .height(40.dp)
+                        )
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(50.dp))
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(250.dp)
             ) {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
+                Surface(
+                    color = Color.White,
+                    border = BorderStroke(5.dp, Color.Black),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(250.dp)
                 ) {
-                    if (questionTitle != null) {
-                        Text(
-                            text = questionTitle, //limiter a 120 char
-                            style = MaterialTheme.typography.bodyLarge,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier.padding(
-                                bottom = 15.dp,
-                                top = 10.dp,
-                                start = 15.dp,
-                                end = 15.dp
-                            )
-                        )
-                    }
-                }
-            }
-        }
-
-        Spacer(modifier = Modifier.height(50.dp))
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            questions?.get(questionOrder)?.proposal?.let { proposal ->
-                listOf(
-                    proposal.p1,
-                    proposal.p2,
-                    proposal.p3,
-                    proposal.p4
-                ).forEachIndexed { index, responseText ->
-                    val responseOrder = index + 1
-                    val isCorrectResponse = responseOrder == questions[questionOrder].response
-
-                    val drawableInt = when {
-                        selectedResponse.value == null -> R.drawable.btnresponse
-                        selectedResponse.value == responseOrder && isCorrectResponse -> R.drawable.goodresponse
-                        selectedResponse.value == responseOrder && !isCorrectResponse -> R.drawable.selectedbadresponse
-                        selectedResponse.value != responseOrder && isCorrectResponse -> R.drawable.goodresponse
-                        selectedResponse.value != responseOrder -> R.drawable.badresponse
-                        else -> R.drawable.btnresponse
-                    }
-
                     Box(
-                        modifier = Modifier
-                            .width(350.dp)
-                            .height(95.dp)
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
                     ) {
-                        Image(
-                            modifier = Modifier
-                                .width(350.dp)
-                                .height(80.dp)
-                                .clickable {
-                                    selectedResponse.value = responseOrder
-                                    showDialog.value = true
-                                },
-                            painter = painterResource(id = drawableInt),
-                            contentDescription = null,
-                        )
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(start = 70.dp, end = 20.dp)
-                                .height(70.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.Center
-                        ) {
+                        if (questionTitle != null) {
                             Text(
-                                text = responseText, // limite de 80 char
-                                fontSize = 20.sp,
-                                style = TextStyle(lineHeight = 22.sp)
+                                text = questionTitle, //limiter a 120 char
+                                style = MaterialTheme.typography.bodyLarge,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier.padding(
+                                    bottom = 15.dp,
+                                    top = 10.dp,
+                                    start = 15.dp,
+                                    end = 15.dp
+                                )
                             )
                         }
                     }
                 }
             }
+
+            Spacer(modifier = Modifier.height(50.dp))
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                questions?.get(questionOrder)?.proposal?.let { proposal ->
+                    listOf(
+                        proposal.p1,
+                        proposal.p2,
+                        proposal.p3,
+                        proposal.p4
+                    ).forEachIndexed { index, responseText ->
+                        val responseOrder = index + 1
+                        val isCorrectResponse = responseOrder == questions[questionOrder].response
+
+                        val drawableInt = when {
+                            selectedResponse.value == null -> R.drawable.btnresponse
+                            selectedResponse.value == responseOrder && isCorrectResponse -> R.drawable.goodresponse
+                            selectedResponse.value == responseOrder && !isCorrectResponse -> R.drawable.selectedbadresponse
+                            selectedResponse.value != responseOrder && isCorrectResponse -> R.drawable.goodresponse
+                            selectedResponse.value != responseOrder -> R.drawable.badresponse
+                            else -> R.drawable.btnresponse
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .width(350.dp)
+                                .height(95.dp)
+                        ) {
+                            Image(
+                                modifier = Modifier
+                                    .width(350.dp)
+                                    .height(80.dp)
+                                    .clickable {
+                                        selectedResponse.value = responseOrder
+                                        showDialog.value = true
+                                    },
+                                painter = painterResource(id = drawableInt),
+                                contentDescription = null,
+                            )
+
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(start = 70.dp, end = 20.dp)
+                                    .height(70.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.Center
+                            ) {
+                                Text(
+                                    text = responseText, // limite de 80 char
+                                    fontSize = 20.sp,
+                                    style = TextStyle(lineHeight = 22.sp)
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+            if (showDialog.value) {
+                CustomPopup(
+                    showDialog = showDialog.value,
+                    onClickNext = onClickNext,
+                    onClickHome = onClickHome,
+                    selectedResponse = selectedResponse.value,
+                    questionOrder = questionOrder,
+                    questions = questions
+                )
+            }
         }
-        if (showDialog.value) {
-            CustomPopup(
-                showDialog = showDialog.value,
-                onClickNext = onClickNext,
-                onClickHome = onClickHome,
-                selectedResponse = selectedResponse.value,
-                questionOrder = questionOrder,
-                questions = questions
-            )
-        }
+    }
+}
+
+@Composable
+fun ResponsiveBox(content: @Composable BoxScope.(Constraints) -> Unit) {
+    BoxWithConstraints {
+        content(constraints)
     }
 }
 
@@ -253,6 +268,7 @@ fun CustomPopup(
     questions: List<QuizQuestion>?
 ) {
     if (showDialog) {
+        var clickBtn = true
         Dialog(onDismissRequest = { }) {
             Box(
                 modifier = Modifier
@@ -278,16 +294,20 @@ fun CustomPopup(
                             if (selectedResponse == questions?.get(questionOrder)?.response) {
                                 Button(
                                     onClick = {
+                                        clickBtn = false
                                         onClickNext()
-                                    }
+                                    },
+                                    enabled = clickBtn
                                 ) {
                                     Text("Yesss")
                                 }
                             } else {
                                 Button(
                                     onClick = {
+                                        clickBtn = false
                                         onClickHome()
-                                    }
+                                    },
+                                    enabled = clickBtn
                                 ) {
                                     Text("Vraiment ? ! ?")
                                 }

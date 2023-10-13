@@ -1,5 +1,5 @@
 {
-  "eazy": [
+  "easy": [
     {
       "question": "Quelle est la couleur du ciel par beau temps ?",
       "response": 1,
@@ -43,16 +43,6 @@
       }
     },
     {
-      "question": "Quelle langue est la plus parlée dans le monde en termes de locuteurs natifs ?",
-      "response": 3,
-      "proposal": {
-        "p1": "Anglais",
-        "p2": "Espagnol",
-        "p3": "Chinois (Mandarin)",
-        "p4": "Hindi"
-      }
-    },
-    {
       "question": "Qui est connu comme le 'père de la bombe atomique' ?",
       "response": 1,
       "proposal": {
@@ -61,9 +51,29 @@
         "p3": "Enrico Fermi",
         "p4": "Richard Feynman"
       }
+    },
+    {
+      "question": "Quelle langue est la plus parlée dans le monde en termes de locuteurs natifs ?",
+      "response": 3,
+      "proposal": {
+        "p1": "Anglais",
+        "p2": "Espagnol",
+        "p3": "Chinois (Mandarin)",
+        "p4": "Hindi"
+      }
     }
   ],
   "impossible": [
+    {
+      "question": "Quel est le nom de l'enzyme qui décompose le lactose ?",
+      "response": 2,
+      "proposal": {
+        "p1": "Amylase",
+        "p2": "Lactase",
+        "p3": "Lipase",
+        "p4": "Catalase"
+      }
+    },
     {
       "question": "Quelle est la distance moyenne entre la Terre et la Lune ?",
       "response": 4,
@@ -83,17 +93,6 @@
         "p3": "Vitamine D",
         "p4": "Vitamine E"
       }
-    },
-    {
-      "question": "Quel est le nom de l'enzyme qui décompose le lactose ?",
-      "response": 2,
-      "proposal": {
-        "p1": "Amylase",
-        "p2": "Lactase",
-        "p3": "Lipase",
-        "p4": "Catalase"
-      }
     }
   ]
 }
-
