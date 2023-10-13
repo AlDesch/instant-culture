@@ -1,11 +1,8 @@
 package com.example.instant_culture.ui.compable
 
 import RotatingScaledBackgroundImage
-import android.media.MediaPlayer
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,6 +11,7 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -31,16 +29,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -61,7 +57,7 @@ fun QuestionView(
     onClickNext: () -> Unit,
     onClickHome: () -> Unit,
     difficulty: Int,
-    rotataingSpeed: Int = 30000
+    rotatingSpeed: Int = 30000
 ) {
     val questionTitle: String? = questions?.get(questionOrder)?.question
     val selectedResponse =
@@ -81,7 +77,7 @@ fun QuestionView(
 
     RotatingScaledBackgroundImage(
         painter = painterResource(id = background),
-        durationMillis = rotataingSpeed
+        durationMillis = rotatingSpeed
     )
     ResponsiveBox {
         Column(
@@ -147,14 +143,13 @@ fun QuestionView(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(250.dp)
             ) {
                 Surface(
                     color = Color.White,
                     border = BorderStroke(5.dp, Color.Black),
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(250.dp)
+                        .fillMaxWidth(0.8f)
+                        .aspectRatio(1.3f),
                 ) {
                     Box(
                         modifier = Modifier.fillMaxSize(),
@@ -227,7 +222,7 @@ fun QuestionView(
                                 horizontalArrangement = Arrangement.Center
                             ) {
                                 Text(
-                                    text = responseText, // limite de 80 char
+                                    text = responseText, // limit de 80 char
                                     fontSize = 20.sp,
                                     style = TextStyle(lineHeight = 22.sp)
                                 )
@@ -239,8 +234,14 @@ fun QuestionView(
             if (showDialog.value) {
                 CustomPopup(
                     showDialog = showDialog.value,
-                    onClickNext = onClickNext,
-                    onClickHome = onClickHome,
+                    onClickNext = {
+                        showDialog.value = false
+                        onClickNext()
+                    },
+                    onClickHome = {
+                        showDialog.value = false
+                        onClickHome()
+                    },
                     selectedResponse = selectedResponse.value,
                     questionOrder = questionOrder,
                     questions = questions
@@ -257,7 +258,6 @@ fun ResponsiveBox(content: @Composable BoxScope.(Constraints) -> Unit) {
     }
 }
 
-
 @Composable
 fun CustomPopup(
     showDialog: Boolean,
@@ -268,7 +268,8 @@ fun CustomPopup(
     questions: List<QuizQuestion>?
 ) {
     if (showDialog) {
-        var clickBtn = true
+        var clickBtn by remember { mutableStateOf(true) }
+
         Dialog(onDismissRequest = { }) {
             Box(
                 modifier = Modifier
@@ -319,6 +320,3 @@ fun CustomPopup(
         }
     }
 }
-
-
-

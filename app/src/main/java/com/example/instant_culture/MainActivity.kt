@@ -1,6 +1,6 @@
 package com.example.instant_culture
 
-import ScaffoldComposable
+import com.example.instant_culture.ui.compable.ScaffoldComposable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.instant_culture.model.QuizQuestion
-import com.example.instant_culture.services.JsonParser
 import com.example.instant_culture.ui.theme.InstantcultureTheme
 
 class MainActivity : ComponentActivity() {
@@ -39,6 +38,6 @@ fun test(questions: List<QuizQuestion>?) {
 @Composable
 fun GreetingPreview() {
     InstantcultureTheme {
-        //ScaffoldComposable(applicationContext)
+        //com.example.instant_culture.ui.compable.ScaffoldComposable(applicationContext)
     }
 }

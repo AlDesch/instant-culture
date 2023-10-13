@@ -1,18 +1,16 @@
+package com.example.instant_culture.ui.compable
+
+import WaitingScreen
 import android.content.Context
 import androidx.compose.animation.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.*
 import com.example.instant_culture.R
 import com.example.instant_culture.model.Screens
 import com.example.instant_culture.services.JsonParser
-import com.example.instant_culture.ui.compable.BeginView
-import com.example.instant_culture.ui.compable.ConfirmationView
-import com.example.instant_culture.ui.compable.QuestionView
-import java.io.IOException
 
 @Composable
 fun FadeTransition(visible: Boolean, content: @Composable () -> Unit) {
@@ -32,7 +30,7 @@ fun ScaffoldComposable(applicationContext: Context) {
     val currentScreen = Screens.valueOf(backStackEntry?.destination?.route ?: Screens.Home.title)
     val questionOrder = remember { mutableIntStateOf(0) }
     val questionDifficulty = remember { mutableIntStateOf(0) }
-    val context = LocalContext.current
+
     NavHost(navController = navigationController, startDestination = Screens.Home.name) {
         composable(route = Screens.Home.name) {
             FadeTransition(visible = currentScreen == Screens.Home) {
@@ -97,7 +95,7 @@ fun ScaffoldComposable(applicationContext: Context) {
                         else -> R.drawable.vertvertbackground
                     },
                     difficulty = questionDifficulty.intValue,
-                    rotataingSpeed = when (questionDifficulty.intValue) {
+                    rotatingSpeed = when (questionDifficulty.intValue) {
                         0 -> 30000
                         1 -> 10000
                         2 -> 1000
