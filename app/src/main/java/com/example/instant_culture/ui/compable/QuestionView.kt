@@ -1,8 +1,11 @@
 package com.example.instant_culture.ui.compable
 
 import RotatingScaledBackgroundImage
+import android.media.MediaPlayer
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,10 +18,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.sharp.Close
 import androidx.compose.material.icons.sharp.Menu
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -26,24 +29,25 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Paint
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
 import com.example.instant_culture.R
 import com.example.instant_culture.model.QuizQuestion
-import com.example.instant_culture.model.ResponseCard
-import com.example.instant_culture.ui.theme.InstantcultureTheme
 
 @Composable
 fun QuestionView(
@@ -53,13 +57,26 @@ fun QuestionView(
     background: Int,
     onClickNext: () -> Unit,
     onClickHome: () -> Unit,
+    difficulty: Int,
+    rotataingSpeed: Int = 30000
 ) {
     val questionTitle: String? = questions?.get(questionOrder)?.question
     val selectedResponse =
         remember { mutableStateOf<Int?>(null) }
     val showDialog = remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
-    RotatingScaledBackgroundImage(painter = painterResource(id = background))
+    MusicManager.playMusic(
+        context,
+        when(difficulty) {
+            0 -> R.raw.eazy
+            1 -> R.raw.hard
+            2 -> R.raw.impossible
+            else -> R.raw.main
+        }
+    )
+
+    RotatingScaledBackgroundImage(painter = painterResource(id = background), durationMillis = rotataingSpeed)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -213,28 +230,75 @@ fun QuestionView(
             }
         }
         if (showDialog.value) {
-            AlertDialog(
-                onDismissRequest = {
-                    showDialog.value = false
-                },
-                title = { Text(text = "Réponse sélectionnée") },
-                text = {
-                    Text(
-                        text = if (selectedResponse.value == questions?.get(questionOrder)?.response) {
-                            "Bonne réponse!"
-                        } else {
-                            "Mauvaise réponse! Essayez encore."
-                        }
-                    )
-                },
-                confirmButton = {
-                    Button(
-                        if (selectedResponse.value == questions?.get(questionOrder)?.response) onClickNext else onClickHome
-                    ) {
-                        Text("OK")
-                    }
-                }
+            CustomPopup(
+                showDialog = showDialog.value,
+                onClickNext = onClickNext,
+                onClickHome = onClickHome,
+                selectedResponse = selectedResponse.value,
+                questionOrder = questionOrder,
+                questions = questions
             )
         }
     }
 }
+
+
+@Composable
+fun CustomPopup(
+    showDialog: Boolean,
+    onClickNext: () -> Unit,
+    onClickHome: () -> Unit,
+    selectedResponse: Int?,
+    questionOrder: Int,
+    questions: List<QuizQuestion>?
+) {
+    if (showDialog) {
+        Dialog(onDismissRequest = { }) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Surface(
+                    shape = RoundedCornerShape(16.dp),
+                ) {
+                    Column(
+                        modifier = Modifier.padding(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(if (selectedResponse == questions?.get(questionOrder)?.response) "Bravo !" else "Raté :/")
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 16.dp),
+                            horizontalArrangement = Arrangement.SpaceEvenly
+                        ) {
+                            if (selectedResponse == questions?.get(questionOrder)?.response) {
+                                Button(
+                                    onClick = {
+                                        onClickNext()
+                                    }
+                                ) {
+                                    Text("Yesss")
+                                }
+                            } else {
+                                Button(
+                                    onClick = {
+                                        onClickHome()
+                                    }
+                                ) {
+                                    Text("Vraiment ? ! ?")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+

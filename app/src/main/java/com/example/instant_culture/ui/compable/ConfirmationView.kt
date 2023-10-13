@@ -20,8 +20,11 @@ import androidx.compose.ui.unit.dp
 import com.example.instant_culture.R
 
 @Composable
-fun ConfirmationView(onClick: () -> Unit) {
-    RotatingScaledBackgroundImage(painter = painterResource(id = R.drawable.vvbackground))
+fun ConfirmationView(
+    onClickReday: () -> Unit,
+    onClickHome: () -> Unit
+) {
+    RotatingScaledBackgroundImage(painter = painterResource(id = R.drawable.vvbackground), durationMillis = 30000)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -45,10 +48,30 @@ fun ConfirmationView(onClick: () -> Unit) {
                 modifier = Modifier
                     .height(230.dp)
                     .fillMaxWidth(),
-                onClick = onClick
+                onClick = onClickReday
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.readybtn),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .height(230.dp)
+                        .fillMaxWidth()
+                )
+            }
+        }
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            IconButton(
+                modifier = Modifier
+                    .height(230.dp)
+                    .fillMaxWidth(),
+                onClick = onClickHome
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.notyet),
                     contentDescription = null,
                     modifier = Modifier
                         .height(230.dp)

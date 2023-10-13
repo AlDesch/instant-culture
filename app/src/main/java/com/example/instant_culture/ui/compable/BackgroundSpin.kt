@@ -14,7 +14,7 @@ import com.example.instant_culture.R
 @Composable
 fun RotatingScaledBackgroundImage(
     painter: Painter,
-    durationMillis: Int = 30000,
+    durationMillis: Int,
     scaleFactor: Float = 4f
 ) {
     val infiniteTransition = rememberInfiniteTransition(label = "")

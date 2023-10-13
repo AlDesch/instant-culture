@@ -1,6 +1,8 @@
 package com.example.instant_culture.ui.compable
 
+import PlayMusic
 import RotatingScaledBackgroundImage
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,20 +15,25 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.instant_culture.R
 
 @Composable
-fun BeginView(onClick: () -> Unit) {
-    RotatingScaledBackgroundImage(painter = painterResource(id = R.drawable.bwbackground))
+fun BeginView(
+    onClickPlay: () -> Unit,
+) {
+    val context = LocalContext.current
+    MusicManager.playMusic(context,R.raw.main)
+
+    RotatingScaledBackgroundImage(painter = painterResource(id = R.drawable.bwbackground), durationMillis = 30000)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -50,7 +57,7 @@ fun BeginView(onClick: () -> Unit) {
                 modifier = Modifier
                     .height(230.dp)
                     .fillMaxWidth(),
-                onClick = onClick
+                onClick = onClickPlay
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.playbtn),
@@ -66,11 +73,15 @@ fun BeginView(onClick: () -> Unit) {
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxWidth()
         ) {
+            val context = LocalContext.current
             IconButton(
                 modifier = Modifier
                     .height(210.dp)
                     .fillMaxWidth(),
-                onClick = { /*TODO*/ }
+                onClick = {
+                    val activity = context as? ComponentActivity
+                    activity?.finish()
+                }
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.quittebtn),

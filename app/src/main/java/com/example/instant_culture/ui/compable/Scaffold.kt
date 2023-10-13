@@ -3,8 +3,8 @@ import androidx.compose.animation.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.*
 import com.example.instant_culture.R
 import com.example.instant_culture.model.Screens
@@ -32,24 +32,25 @@ fun ScaffoldComposable(applicationContext: Context) {
     val currentScreen = Screens.valueOf(backStackEntry?.destination?.route ?: Screens.Home.title)
     val questionOrder = remember { mutableIntStateOf(0) }
     val questionDifficulty = remember { mutableIntStateOf(0) }
-
+    val context = LocalContext.current
     NavHost(navController = navigationController, startDestination = Screens.Home.name) {
         composable(route = Screens.Home.name) {
             FadeTransition(visible = currentScreen == Screens.Home) {
                 BeginView(
-                    onClick = {
-                        println("go to question")
+                    onClickPlay = {
                         navigationController.navigate(route = Screens.Confirmation.name)
-                    }
+                    },
                 )
             }
         }
         composable(route = Screens.Confirmation.name) {
             FadeTransition(visible = currentScreen == Screens.Confirmation) {
                 ConfirmationView(
-                    onClick = {
-                        println("go to confirmation")
+                    onClickReday = {
                         navigationController.navigate(route = Screens.Waiting.name)
+                    },
+                    onClickHome = {
+                        navigationController.navigate(route = Screens.Home.name)
                     }
                 )
             }
@@ -58,17 +59,10 @@ fun ScaffoldComposable(applicationContext: Context) {
             FadeTransition(visible = currentScreen == Screens.Question) {
                 QuestionView(
                     onClick = {
-                        println("go to question")
                         navigationController.navigate(route = Screens.Home.name)
                     },
                     onClickNext = {
                         questionOrder.intValue++
-                        println(
-                            "Json size" + JsonParser().getQuestionsFromJson(
-                                applicationContext,
-                                questionDifficulty.intValue
-                            )?.size + " order" + questionOrder.intValue
-                        )
                         if (JsonParser().getQuestionsFromJson(
                                 applicationContext,
                                 questionDifficulty.intValue
@@ -79,7 +73,8 @@ fun ScaffoldComposable(applicationContext: Context) {
                         }
                         println(questionDifficulty.intValue)
                         if (questionDifficulty.intValue == 3) {
-                            println("test")
+                            questionDifficulty.intValue = 0
+                            questionOrder.intValue = 0
                             navigationController.navigate(route = Screens.Home.name)
                             return@QuestionView
                         }
@@ -100,7 +95,14 @@ fun ScaffoldComposable(applicationContext: Context) {
                         1 -> R.drawable.vvbackground
                         2 -> R.drawable.bbackground
                         else -> R.drawable.vertvertbackground
-                    }
+                    },
+                    difficulty = questionDifficulty.intValue,
+                    rotataingSpeed = when (questionDifficulty.intValue) {
+                        0 -> 30000
+                        1 -> 10000
+                        2 -> 1000
+                        else -> 30000
+                    },
                 )
             }
         }
