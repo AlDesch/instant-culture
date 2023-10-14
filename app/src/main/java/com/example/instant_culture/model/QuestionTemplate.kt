@@ -3,7 +3,9 @@ package com.example.instant_culture.model
 data class QuizQuestion(
     val question: String,
     val response: Int,
-    val proposal: Proposal
+    val proposal: Proposal,
+    val descriptionBad: String,
+    val descriptionGood: String,
 )
 
 data class Proposal(

@@ -3,6 +3,8 @@
     {
       "question": "Quelle est la couleur du ciel par beau temps ?",
       "response": 1,
+      "descriptionGood": "Le ciel est bleu car il s'agit de la couleur de l'oxygène. En réalité, il s'agit de la diffusion de la lumière blanche du soleil par l'atmosphère",
+      "descriptionBad": "Si tu sortais un peu plus, la réponse serais évidente ! ",
       "proposal": {
         "p1": "Bleu",
         "p2": "Rouge",
@@ -11,8 +13,22 @@
       }
     },
     {
+      "question": "Quelle est la plus grande planète de notre système solaire ?",
+      "response": 4,
+      "descriptionGood": "Jupiter est la plus grande planète de notre système solaire, principalement composée d'hydrogène et d'hélium.",
+      "descriptionBad": "Essayons avec une autre question spatiale !",
+      "proposal": {
+        "p1": "Terre",
+        "p2": "Mars",
+        "p3": "Saturne",
+        "p4": "Jupiter"
+      }
+    },
+    {
       "question": "Quel fruit est connu comme le 'roi des fruits' ?",
       "response": 3,
+      "descriptionGood": "Le durian est un fruit tropical bien connu pour son odeur distinctive, qui est extrêmement forte et pénétrante, même lorsque le fruit est encore fermé !",
+      "descriptionBad": "Mauvaise réponse mais rien ne t'empeche de manger 5 fruits et légumes par jour !",
       "proposal": {
         "p1": "Pomme",
         "p2": "Banane",
@@ -23,11 +39,25 @@
     {
       "question": "Quel numéro est représenté par le symbole 'V' en chiffres romains ?",
       "response": 2,
+      "descriptionGood": "\"V\" est aussi le premier chiffre utilisé dans la dénotation des nombres romains qui ne soit pas répété. Par exemple, 3 est représenté comme \"III\", mais 5 est simplement \"V\"",
+      "descriptionBad": "Le système de chiffres romains était largement utilisé dans tout l'Empire romain ... J'espère que l'indice te sera utile ...",
       "proposal": {
         "p1": "4",
         "p2": "5",
         "p3": "10",
         "p4": "50"
+      }
+    },
+    {
+      "question": "Quelle est la capitale de la France ?",
+      "response": 1,
+      "descriptionGood": "Paris est non seulement la capitale de la France, mais aussi la ville la plus peuplée du pays.",
+      "descriptionBad": "Révisons un peu plus notre géographie !",
+      "proposal": {
+        "p1": "Paris",
+        "p2": "Lyon",
+        "p3": "Marseille",
+        "p4": "Lille"
       }
     }
   ],
@@ -35,6 +65,8 @@
     {
       "question": "Quelle est la molécule la plus abondante dans l'atmosphère terrestre ?",
       "response": 4,
+      "descriptionGood": "Azote : environ 78%\nOxygène : environ 21%\nArgon: environ 0,93%\nDioxyde de carbone: environ 0,04% (varie avec le temps)\nEt bien d'autre !",
+      "descriptionBad": "Non, l'atomsphère n'est pas composé princiaplement d'air ...",
       "proposal": {
         "p1": "Oxygène",
         "p2": "Dioxyde de carbone",
@@ -45,6 +77,8 @@
     {
       "question": "Quelle langue est la plus parlée dans le monde en termes de locuteurs natifs ?",
       "response": 3,
+      "descriptionGood": "En raison de la grande population de la Chine, le mandarin a le plus grand nombre de locuteurs natifs au monde, avec plus de 900 millions de personnes qui parlent mandarin comme langue maternelle.",
+      "descriptionBad": "il y a environ 7 139 langues vivantes connues en 2022 .. Ca fait beaucoup la non ?",
       "proposal": {
         "p1": "Anglais",
         "p2": "Espagnol",
@@ -55,11 +89,25 @@
     {
       "question": "Qui est connu comme le 'père de la bombe atomique' ?",
       "response": 1,
+      "descriptionGood": "J. Robert Oppenheimer, qui était un physicien théorique américain et le directeur scientifique du Projet Manhattan !",
+      "descriptionBad": "Comme on pourait le croir, ce n'est pas monsieur Atomique !",
       "proposal": {
         "p1": "Robert Oppenheimer",
         "p2": "Albert Einstein",
         "p3": "Enrico Fermi",
         "p4": "Richard Feynman"
+      }
+    },
+    {
+      "question": "Quel élément chimique a le symbole 'O' ?",
+      "response": 1,
+      "descriptionGood": "L'oxygène est un élément chimique essentiel pour la vie sur Terre, il a le symbole 'O' et le numéro atomique 8.",
+      "descriptionBad": "Cherchons dans le tableau périodique !",
+      "proposal": {
+        "p1": "Oxygène",
+        "p2": "Or",
+        "p3": "Oméga",
+        "p4": "Opium"
       }
     }
   ],
@@ -67,6 +115,8 @@
     {
       "question": "Quelle est la distance moyenne entre la Terre et la Lune ?",
       "response": 4,
+      "descriptionGood": "il est important de noter que la distance entre la Terre et la Lune n'est pas constante car elles suivent des orbites elliptiques. Cela signifie que la distance varie au fil du temps,.",
+      "descriptionBad": "En moyenne, Jupiter est à environ 778 millions de kilomètres du Soleil. De rien !",
       "proposal": {
         "p1": "123,000 km",
         "p2": "256,000 km",
@@ -77,6 +127,8 @@
     {
       "question": "Quelle vitamine est aussi connue sous le nom de rétinol ?",
       "response": 1,
+      "descriptionGood": "Le rétinol est une forme de vitamine A qui se trouve dans les aliments comme les légumes à feuilles vertes, les fruits orange et jaunes, les produits laitiers, les foies ....",
+      "descriptionBad": "Si tu sortais un peu plus, la réponse serais évidente ! ",
       "proposal": {
         "p1": "Vitamine A",
         "p2": "Vitamine C",
@@ -87,11 +139,49 @@
     {
       "question": "Quel est le nom de l'enzyme qui décompose le lactose ?",
       "response": 2,
+      "descriptionGood": " La lactase décompose le lactose, qui est un sucre présent dans le lait, en deux sucres plus simples : le glucose et le galactose !",
+      "descriptionBad": "Même une vache aurait trouvé la réponse",
       "proposal": {
         "p1": "Amylase",
         "p2": "Lactase",
         "p3": "Lipase",
         "p4": "Catalase"
+      }
+    },
+    {
+      "question": "Quelle est la vitesse de la lumière dans le vide ?",
+      "response": 3,
+      "descriptionGood": "La vitesse de la lumière dans le vide est d'environ 299 792 458 mètres par seconde.",
+      "descriptionBad": "Non, ce n'est pas infini !",
+      "proposal": {
+        "p1": "150 000 km/s",
+        "p2": "300 000 km/h",
+        "p3": "299 792 458 m/s",
+        "p4": "1 000 000 km/s"
+      }
+    },
+    {
+      "question": "Quel élément chimique est représenté par le symbole 'Au' ?",
+      "response": 1,
+      "descriptionGood": "'Au' est le symbole chimique de l'or dans le tableau périodique des éléments.",
+      "descriptionBad": "Peut être le \"Au mon dieu que c'est évident?\"",
+      "proposal": {
+        "p1": "Or",
+        "p2": "Argent",
+        "p3": "Plomb",
+        "p4": "Uranium"
+      }
+    },
+    {
+      "question": "Quel est le plus grand nombre premier connu ?",
+      "response": 4,
+      "descriptionGood": "Le plus grand nombre premier connu change constamment à mesure que de nouveaux nombres premiers sont découverts. Les plus grands sont souvent des nombres de Mersenne.",
+      "descriptionBad": "C'est un très grand nombre, souvent avec des millions de chiffres !",
+      "proposal": {
+        "p1": "999983",
+        "p2": "1299827",
+        "p3": "15485863",
+        "p4": "Variable, car de nouveaux sont constamment découverts."
       }
     }
   ]

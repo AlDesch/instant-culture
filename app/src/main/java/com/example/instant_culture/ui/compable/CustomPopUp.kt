@@ -1,5 +1,7 @@
 package com.example.instant_culture.ui.compable
 
+import MusicManager.playSoundFail
+import MusicManager.playSoundGood
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
@@ -41,9 +44,13 @@ fun CustomPopup(
     questions: List<QuizQuestion>?
 ) {
     if (showDialog) {
-        var clickBtn by remember { mutableStateOf(true) }
-
+        val context = LocalContext.current
         Dialog(onDismissRequest = { }) {
+            if (selectedResponse == questions?.get(questionOrder)?.response) {
+                playSoundGood(context)
+            } else {
+                playSoundFail(context)
+            }
             BoxWithConstraints(contentAlignment = Alignment.Center) {
                 Image(
                     painter = if (selectedResponse == questions?.get(questionOrder)?.response) painterResource(
@@ -59,15 +66,16 @@ fun CustomPopup(
                     horizontalAlignment = Alignment.CenterHorizontally
                 )
                 {
-                    val customText =
-                        "Cest un custome text, c'est pour expliquer la reponse en general ! Cest un custome text, c'est pour expliquer la reponse en general !"
+                    val customText = if (selectedResponse == questions?.get(questionOrder)?.response) questions?.get(questionOrder)?.descriptionGood else questions?.get(questionOrder)?.descriptionBad
                     Text(text = if (selectedResponse == questions?.get(questionOrder)?.response) "Bien Joué !" else "Raaah Dommage !")
-                    Text(
-                        modifier = Modifier.padding(20.dp),
-                        text = customText,
-                        fontSize = 20.sp,
-                        fontStyle = FontStyle.Italic
-                    )
+                    if (customText != null) {
+                        Text(
+                            modifier = Modifier.padding(20.dp),
+                            text = customText,
+                            fontSize = 20.sp,
+                            fontStyle = FontStyle.Italic
+                        )
+                    }
                     Image(
                         modifier = Modifier
                             .width(250.dp)

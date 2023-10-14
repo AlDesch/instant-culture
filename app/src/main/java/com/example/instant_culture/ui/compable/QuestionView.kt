@@ -148,6 +148,7 @@ fun QuestionView(
                 Surface(
                     color = Color.White,
                     border = BorderStroke(5.dp, Color.Black),
+                    shape = RoundedCornerShape (16.dp),
                     modifier = Modifier
                         .fillMaxWidth(0.8f)
                         .aspectRatio(1.3f),
