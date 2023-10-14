@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.instant_culture.R
@@ -24,60 +25,56 @@ fun ConfirmationView(
     onClickReday: () -> Unit,
     onClickHome: () -> Unit
 ) {
-    RotatingScaledBackgroundImage(painter = painterResource(id = R.drawable.confirmationmode), durationMillis = 30000)
+    val heightScreen = LocalConfiguration.current.screenHeightDp
+
+    RotatingScaledBackgroundImage(
+        painter = painterResource(id = R.drawable.confirmationmode),
+        durationMillis = 30000
+    )
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
         verticalArrangement = Arrangement.SpaceEvenly,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .height((heightScreen * 0.6).dp)
+            .fillMaxWidth()
     ) {
         Image(
-            contentScale = ContentScale.FillWidth,
+            contentScale = ContentScale.FillHeight,
             painter = painterResource(id = R.drawable.logo),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
+                .height((heightScreen * 0.4).dp)
         )
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxWidth()
+        IconButton(
+            modifier = Modifier
+                .height((heightScreen * 0.2).dp)
+                .fillMaxWidth(),
+            onClick = onClickReday
         ) {
-            IconButton(
+            Image(
+                contentScale = ContentScale.FillHeight,
+                painter = painterResource(id = R.drawable.readybtn),
+                contentDescription = null,
                 modifier = Modifier
-                    .height(230.dp)
-                    .fillMaxWidth(),
-                onClick = onClickReday
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.readybtn),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .height(230.dp)
-                        .fillMaxWidth()
-                )
-            }
+                    .height((heightScreen * 0.2).dp)
+                    .fillMaxWidth()
+            )
         }
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxWidth()
+        IconButton(
+            modifier = Modifier
+                .height((heightScreen * 0.2).dp)
+                .fillMaxWidth(),
+            onClick = onClickHome
         ) {
-            IconButton(
+            Image(
+                contentScale = ContentScale.FillHeight,
+                painter = painterResource(id = R.drawable.notyet),
+                contentDescription = null,
                 modifier = Modifier
-                    .height(230.dp)
-                    .fillMaxWidth(),
-                onClick = onClickHome
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.notyet),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .height(230.dp)
-                        .fillMaxWidth()
-                )
-            }
+                    .height((heightScreen * 0.2).dp)
+                    .fillMaxWidth()
+            )
         }
     }
 }

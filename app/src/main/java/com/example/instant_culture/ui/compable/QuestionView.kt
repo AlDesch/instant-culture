@@ -38,6 +38,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -64,6 +66,8 @@ fun QuestionView(
     val selectedResponse =
         remember { mutableStateOf<Int?>(null) }
     val showDialog = remember { mutableStateOf(false) }
+    val heightScreen = LocalConfiguration.current.screenHeightDp
+    val weightScreen = LocalConfiguration.current.screenHeightDp
     val context = LocalContext.current
 
     MusicManager.playMusic(
@@ -90,8 +94,8 @@ fun QuestionView(
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth()
+                horizontalArrangement = Arrangement.Start,
+                modifier = Modifier.fillMaxWidth().height((heightScreen *0.1).dp)
             ) {
                 IconButton(
                     onClick = onClick
@@ -115,35 +119,13 @@ fun QuestionView(
                     painter = painterResource(id = R.drawable.instant_culture),
                     contentDescription = null
                 )
-                IconButton(
-                    onClick = {
-                        print("Menu")
-                    }
-                ) {
-                    Surface(
-                        color = MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier
-                            .width(50.dp)
-                            .height(50.dp)
-                            .clip(CircleShape)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Sharp.Menu,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onPrimary,
-                            modifier = Modifier
-                                .width(40.dp)
-                                .height(40.dp)
-                        )
-                    }
-                }
             }
-            Spacer(modifier = Modifier.height(50.dp))
+
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth().height((heightScreen*0.3).dp)
             ) {
                 Surface(
                     color = Color.White,
@@ -151,7 +133,8 @@ fun QuestionView(
                     shape = RoundedCornerShape (16.dp),
                     modifier = Modifier
                         .fillMaxWidth(0.8f)
-                        .aspectRatio(1.3f),
+                        .aspectRatio(1.3f)
+                        .padding(bottom = 20.dp, top = 20.dp)
                 ) {
                     Box(
                         modifier = Modifier.fillMaxSize(),
@@ -160,7 +143,7 @@ fun QuestionView(
                         if (questionTitle != null) {
                             Text(
                                 text = questionTitle, //limiter a 120 char
-                                style = MaterialTheme.typography.bodyLarge,
+                                style = MaterialTheme.typography.bodyMedium,
                                 textAlign = TextAlign.Center,
                                 modifier = Modifier.padding(
                                     bottom = 15.dp,
@@ -174,10 +157,10 @@ fun QuestionView(
                 }
             }
 
-            Spacer(modifier = Modifier.height(50.dp))
             Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxWidth().height((heightScreen*0.5).dp)
             ) {
                 LaunchedEffect(key1 = questionOrder) {
                     selectedResponse.value = null
@@ -201,13 +184,14 @@ fun QuestionView(
 
                         Box(
                             modifier = Modifier
-                                .width(350.dp)
-                                .height(95.dp)
+                                .fillMaxWidth()
+                                .height((heightScreen*0.13).dp)
                         ) {
                             Image(
+                                contentScale = ContentScale.FillHeight,
                                 modifier = Modifier
-                                    .width(350.dp)
-                                    .height(80.dp)
+                                    .fillMaxWidth()
+                                    .height((heightScreen*0.1).dp)
                                     .clickable {
                                         selectedResponse.value = responseOrder
                                         showDialog.value = true
@@ -215,12 +199,10 @@ fun QuestionView(
                                 painter = painterResource(id = drawableInt),
                                 contentDescription = null,
                             )
-
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(start = 70.dp, end = 20.dp)
-                                    .height(70.dp),
+                                    .height((heightScreen*0.1).dp),
                                 verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.Center
                             ) {
