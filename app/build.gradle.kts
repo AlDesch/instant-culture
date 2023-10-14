@@ -64,6 +64,7 @@ dependencies {
     implementation ("androidx.compose.ui:ui-tooling:<latest-version>")
     implementation ("androidx.compose.runtime:runtime-livedata:<latest-version>")
     implementation("com.google.code.gson:gson:2.10")
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

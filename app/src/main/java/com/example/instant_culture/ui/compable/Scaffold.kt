@@ -1,6 +1,6 @@
 package com.example.instant_culture.ui.compable
 
-import WaitingScreen
+import CountdownTimerCircle
 import android.content.Context
 import androidx.compose.animation.*
 import androidx.compose.runtime.Composable
@@ -105,7 +105,7 @@ fun ScaffoldComposable(applicationContext: Context) {
             }
         }
         composable(route = Screens.Waiting.name) {
-            WaitingScreen(navigationController)
+            CountdownTimerCircle { navigationController.navigate(route = Screens.Question.name) }
         }
     }
 }
